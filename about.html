@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | SSDCPL</title>
+  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="SSDCPL Logo" class="logo-img"/> SSDCPL
+    </a>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <ul class="nav-links">
+      <li class="close-btn"><a href="#" onclick="toggleMenu()">&times;</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="awards.html">Awards</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<header class="hero">
+  <h1>About Us</h1>
+  <p>Learn more about Suwarnasatya Design and Construction Pvt. Ltd.</p>
+</header>
+
+<section class="company-details">
+  <div class="container">
+    <h2>Company Details</h2>
+    <p><strong>Registered Address:</strong><br>
+    Pl. 196, Markanday, S G N, Sanstha Chakote Nagar, Market Yard Solapur, 
+    Solapur, Solapur North, Maharashtra, India, 413005</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Our Directors</h2>
+    <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+      
+      <div style="text-align: center; max-width: 300px;">
+        <img src="Vyankatesh_Satyanrayan_Gundu.jpeg" 
+             alt="Vyankatesh Satyanarayan Gundu" 
+             style="width:250px; height:250px; object-fit:cover; border-radius:8px;">
+        <h3>Vyankatesh Satyanarayan Gundu</h3>
+        <p>Managing Director (Appointed: 11 May 2023)</p>
+        <p>With a strong vision for innovative design and construction, Vyankatesh leads the company’s strategic growth and ensures the highest standards of quality and client satisfaction.</p>
+      </div>
+      
+      <div style="text-align: center; max-width: 300px;">
+        <img src="Jyoti_Satyanrayan_Gundu.jpeg" 
+             alt="Jyoti Satyanarayan Gundu" 
+             style="width:250px; height:250px; object-fit:cover; border-radius:8px;">
+        <h3>Jyoti Satyanarayan Gundu</h3>
+        <p>Director (Appointed: 11 May 2023)</p>
+        <p>Jyoti focuses on operational excellence and client relations, bringing dedication and precision to every project while supporting the company’s long-term mission and values.</p>
+      </div>
+    
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Suwarnasatya Design &amp; Construction Pvt. Ltd. | All Rights Reserved</p>
+    <div class="social-links">
+      <a href="https://wa.me/917020641228" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://t.me/ErVyanki1997" target="_blank"><i class="fab fa-telegram"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
+  }
+</script>
+
+<script>
+  function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+      link.addEventListener("click", function() {
+        document.querySelector(".nav-links").classList.remove("show");
+      });
+    });
+  });
+</script>
+
+
+<script>
+  function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
+    document.querySelector(".overlay").classList.toggle("active");
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+      link.addEventListener("click", function() {
+        document.querySelector(".nav-links").classList.remove("show");
+        document.querySelector(".overlay").classList.remove("active");
+      });
+    });
+  });
+</script>
+
+
+
+
+<div class="floating-social">
+  <a href="https://wa.me/917020641228" target="_blank" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank" data-tooltip="Facebook"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank" data-tooltip="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank" data-tooltip="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  <a href="https://t.me/ErVyanki1997" target="_blank" data-tooltip="Telegram"><i class="fab fa-telegram"></i></a>
+</div>
+
+
+
+</body>
+</html>

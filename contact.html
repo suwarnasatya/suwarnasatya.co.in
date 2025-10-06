@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SSDCPL | Contact</title>
+<link href="style.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="SSDCPL Logo" class="logo-img"/> SSDCPL
+    </a>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <ul class="nav-links">
+      <li class="close-btn"><a href="#" onclick="toggleMenu()">&times;</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="awards.html">Awards</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<section>
+<div class="container">
+<h2>Contact Us</h2>
+<p><strong>Address:</strong> Suwarnasatya Design &amp; Construction Pvt. Ltd., Solapur, India</p>
+<p><strong>Phone:</strong> +91 7020641228</p>
+<p><strong>Email:</strong> suwarnasatya26@gmail.com</p>
+</div>
+</section>
+<footer>
+  <div class="container">
+    <p>© 2025 Suwarnasatya Design &amp; Construction Pvt. Ltd. | All Rights Reserved</p>
+    <div class="social-links">
+      <a href="https://wa.me/917020641228" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://t.me/ErVyanki1997" target="_blank"><i class="fab fa-telegram"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
+  }
+</script>
+
+<script>
+  function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+      link.addEventListener("click", function() {
+        document.querySelector(".nav-links").classList.remove("show");
+      });
+    });
+  });
+</script>
+
+
+<script>
+  function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
+    document.querySelector(".overlay").classList.toggle("active");
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+      link.addEventListener("click", function() {
+        document.querySelector(".nav-links").classList.remove("show");
+        document.querySelector(".overlay").classList.remove("active");
+      });
+    });
+  });
+</script>
+
+
+
+
+<div class="floating-social">
+  <a href="https://wa.me/917020641228" target="_blank" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank" data-tooltip="Facebook"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank" data-tooltip="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank" data-tooltip="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  <a href="https://t.me/ErVyanki1997" target="_blank" data-tooltip="Telegram"><i class="fab fa-telegram"></i></a>
+</div>
+
+
+
+</body>
+</html>

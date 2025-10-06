@@ -1,0 +1,507 @@
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff;
+  color: #333;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+.navbar {
+  background: #003366;
+  padding: 1rem 0;
+}
+.navbar .logo {
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+.navbar .nav-links {
+  list-style: none;
+  float: right;
+  margin: 0;
+}
+.navbar .nav-links li {
+  display: inline;
+  margin-left: 20px;
+}
+.navbar .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+header.hero {
+  background: #f4f4f4;
+  padding: 60px 20px;
+  text-align: center;
+}
+header.hero h1 {
+  font-size: 2.5rem;
+  color: #003366;
+}
+header.hero p {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+section {
+  padding: 40px 20px;
+}
+section h2 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+.services, .projects-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: #fafafa;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+}
+.card img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+footer {
+  background: #003366;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.logo-img {
+  height: 80px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Navbar Hamburger Menu */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #003366;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  .navbar .nav-links.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar .nav-links li {
+    margin: 10px 0;
+  }
+}
+
+/* Highlight active nav link */
+.nav-links a[aria-current="page"] {
+  color: #FFAA00;
+  font-weight: bold;
+}
+
+/* Slide-in animation for mobile nav */
+@media (max-width: 768px) {
+  .navbar .nav-links {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  .navbar .nav-links.show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Overlay background when menu is open */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+.overlay.active {
+  display: block;
+}
+.navbar .nav-links {
+  z-index: 1000;
+}
+
+/* Smooth fade effect for overlay */
+.overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: block; /* always block, hide via opacity + pointer-events */
+  pointer-events: none;
+}
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Slide-in animation for nav items */
+@media (max-width: 768px) {
+  .navbar .nav-links li {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .navbar .nav-links.show li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .navbar .nav-links.show li:nth-child(1) { transition-delay: 0.1s; }
+  .navbar .nav-links.show li:nth-child(2) { transition-delay: 0.2s; }
+  .navbar .nav-links.show li:nth-child(3) { transition-delay: 0.3s; }
+  .navbar .nav-links.show li:nth-child(4) { transition-delay: 0.4s; }
+  .navbar .nav-links.show li:nth-child(5) { transition-delay: 0.5s; }
+  .navbar .nav-links.show li:nth-child(6) { transition-delay: 0.6s; }
+}
+
+/* Bounce effect for nav items */
+@keyframes slideBounce {
+  0% { transform: translateX(30px); opacity: 0; }
+  60% { transform: translateX(-10px); opacity: 1; }
+  80% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .navbar .nav-links li {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  .navbar .nav-links.show li {
+    animation: slideBounce 0.5s forwards;
+  }
+  .navbar .nav-links.show li:nth-child(1) { animation-delay: 0.1s; }
+  .navbar .nav-links.show li:nth-child(2) { animation-delay: 0.2s; }
+  .navbar .nav-links.show li:nth-child(3) { animation-delay: 0.3s; }
+  .navbar .nav-links.show li:nth-child(4) { animation-delay: 0.4s; }
+  .navbar .nav-links.show li:nth-child(5) { animation-delay: 0.5s; }
+  .navbar .nav-links.show li:nth-child(6) { animation-delay: 0.6s; }
+}
+
+/* Sliding background panel for mobile menu */
+@media (max-width: 768px) {
+  .navbar .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 250px;
+    background: #003366;
+    flex-direction: column;
+    padding-top: 60px;
+    transform: translateX(100%);
+    transition: transform 0.4s ease;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.3);
+  }
+
+  .navbar .nav-links.show {
+    transform: translateX(0);
+  }
+
+  .navbar .nav-links li {
+    margin: 15px 20px;
+  }
+}
+
+/* Close button inside sliding panel */
+.navbar .nav-links .close-btn {
+  text-align: right;
+  margin: 10px 15px;
+}
+.navbar .nav-links .close-btn a {
+  font-size: 28px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Sticky close button in sliding panel */
+.navbar .nav-links .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  margin: 0;
+}
+.navbar .nav-links .close-btn a {
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Hover effect for close button */
+.navbar .nav-links .close-btn a {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.navbar .nav-links .close-btn a:hover {
+  color: #FFAA00;
+  transform: scale(1.2);
+}
+
+/* Active nav link underline */
+.nav-links a[aria-current="page"] {
+  border-bottom: 2px solid #FFAA00;
+  padding-bottom: 2px;
+}
+
+/* Social links footer */
+.social-links {
+  margin-top: 10px;
+}
+.social-links a {
+  color: #fff;
+  font-size: 22px;
+  margin: 0 8px;
+  transition: color 0.3s, transform 0.3s;
+}
+.social-links a:hover {
+  color: #FFAA00;
+  transform: scale(1.2);
+}
+
+/* Floating social icons (mobile only) */
+.floating-social {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2000;
+}
+
+.floating-social a {
+  background: #003366;
+  color: #fff;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.floating-social a:hover {
+  background: #FFAA00;
+  transform: scale(1.2);
+}
+
+/* Show only on mobile */
+@media (min-width: 769px) {
+  .floating-social {
+    display: none;
+  }
+}
+
+/* Custom tooltip styling for floating social icons */
+.floating-social a {
+  position: relative;
+}
+
+.floating-social a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 120%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #003366;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  font-size: 12px;
+}
+
+.floating-social a:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(-5px);
+}
+
+/* Tooltip hover color change */
+.floating-social a:hover::after {
+  background: #FFAA00;
+  color: #003366;
+}
+
+/* Tooltip slide-up animation */
+.floating-social a::after {
+  transform: translateY(-40%);
+}
+.floating-social a:hover::after {
+  transform: translateY(-60%);
+}
+
+/* Bounce effect for floating social icons */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+.floating-social a:hover {
+  animation: bounce 0.6s;
+}
+
+/* Glow effect for floating social icons */
+.floating-social a:hover {
+  box-shadow: 0 0 12px #FFAA00, 0 0 20px #FFAA00;
+}
+
+/* Animated underline effect for all nav links */
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #FFAA00;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Animated underline effect for footer social links */
+.social-links a {
+  position: relative;
+  text-decoration: none;
+}
+
+.social-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #FFAA00;
+  transition: width 0.3s ease;
+}
+
+.social-links a:hover::after {
+  width: 100%;
+}
+
+/* Animated underline effect for floating social icons */
+.floating-social a {
+  position: relative;
+  text-decoration: none;
+}
+
+.floating-social a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 2px;
+  background: #FFAA00;
+  transition: width 0.3s ease;
+}
+
+.floating-social a:hover::after {
+  width: 80%;
+}
+
+/* Sync underline and tooltip animations */
+.nav-links a::after,
+.social-links a::after,
+.floating-social a::after {
+  transition: width 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+.floating-social a::after {
+  bottom: -10px;
+}
+
+.floating-social a:hover::after,
+.social-links a:hover::after,
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.floating-social a::after {
+  width: 0%;
+}
+
+.floating-social a:hover::after {
+  width: 80%;
+}
+
+/* Back to Services button */
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background: #003366;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+.back-btn:hover {
+  background: #FFAA00;
+  color: #003366;
+}
+
+/* Sticky Back to Services button */
+.back-btn {
+  position: sticky;
+  top: 80px; /* Adjust to sit below navbar */
+  z-index: 1000;
+}

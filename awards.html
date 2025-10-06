@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SSDCPL | Awards &amp; Certifications</title>
+<link href="style.css" rel="stylesheet"/>
+<!-- Lightbox CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet"/>
+<style>
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      text-align: center;
+      background: #fafafa;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    .gallery-item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+  </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="SSDCPL Logo" class="logo-img"/> SSDCPL
+    </a>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <ul class="nav-links">
+      <li class="close-btn"><a href="#" onclick="toggleMenu()">&times;</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="awards.html" aria-current="page">Awards</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<header class="hero">
+<h1>Awards &amp; Certifications</h1>
+<p>Recognizing our commitment to excellence and quality.</p>
+</header>
+<section class="awards-section">
+<div class="container">
+<h2>Our Achievements</h2>
+<div class="gallery">
+<div class="gallery-item">
+<a data-lightbox="achievements" data-title="India 5000 Best MSME Nomination 2024" href="images/INDIA_5000_BEST_MSME.jpeg">
+<img alt="India 5000 Best MSME Nomination 2024" src="INDIA_5000_BEST_MSME.jpeg"/>
+</a>
+<p>India 5000 Best MSME Nomination 2024</p>
+</div>
+<div class="gallery-item">
+<a data-lightbox="achievements" data-title="India 5000 Best MSME Nomination 2025" href="images/India5000_Nomination_Certificate.jpg">
+<img alt="India 5000 Best MSME Nomination 2025" src="India5000_Nomination_Certificate.jpg"/>
+</a>
+<p>India 5000 Best MSME Nomination 2025</p>
+</div>
+</div>
+</div>
+</section>
+<section class="certifications-section">
+<div class="container">
+<h2>Our Certifications</h2>
+<div class="gallery">
+<div class="gallery-item">
+<a data-lightbox="certifications" data-title="Certificate of Incorporation" href="images/CERTIFICATE_OF_INCORPORATION.jpeg">
+<img alt="Certificate of Incorporation" src="CERTIFICATE_OF_INCORPORATION.jpeg"/>
+</a>
+<p>Certificate of Incorporation</p>
+</div>
+<div class="gallery-item">
+<a data-lightbox="certifications" data-title="Startup India Recognition Certificate" href="images/RECOGNITION_CERTIFICATE.jpeg">
+<img alt="Startup India Recognition Certificate" src="RECOGNITION_CERTIFICATE.jpeg"/>
+</a>
+<p>Startup India Recognition Certificate</p>
+</div>
+<div class="gallery-item">
+<a data-lightbox="certifications" data-title="Udyam Registration Certificate" href="images/Udyam_certificate_page-0001.jpg">
+<img alt="Udyam Registration Certificate" src="Udyam_certificate_page-0001.jpg"/>
+</a>
+<p>Udyam Registration Certificate</p>
+</div>
+<div class="gallery-item">
+<a data-lightbox="certifications" data-title="Shop Establishment Certificate" href="images/Shop_Establishment_Certificate_page-0001.jpg">
+<img alt="Shop Establishment Certificate" src="Shop_Establishment_Certificate_page-0001.jpg"/>
+</a>
+<p>Shop Establishment Certificate</p>
+</div>
+<div class="gallery-item">
+<a data-lightbox="certifications" data-title="Certificate of Business Correspondence (Retailer)" href="images/GRAHAKA_SEVA_KENDRA.jpeg">
+<img alt="Certificate of Business Correspondence (Retailer)" src="GRAHAKA_SEVA_KENDRA.jpeg"/>
+</a>
+<p>Certificate of Business Correspondence (Retailer)</p>
+</div>
+</div>
+</div>
+</section>
+<footer>
+  <div class="container">
+    <p>© 2025 Suwarnasatya Design &amp; Construction Pvt. Ltd. | All Rights Reserved</p>
+    <div class="social-links">
+      <a href="https://wa.me/917020641228" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://t.me/ErVyanki1997" target="_blank"><i class="fab fa-telegram"></i></a>
+    </div>
+  </div>
+</footer>
+<!-- Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+<script>
+  function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
+  }
+</script>
+
+<script>
+  function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+      link.addEventListener("click", function() {
+        document.querySelector(".nav-links").classList.remove("show");
+      });
+    });
+  });
+</script>
+
+
+<script>
+  function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
+    document.querySelector(".overlay").classList.toggle("active");
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+      link.addEventListener("click", function() {
+        document.querySelector(".nav-links").classList.remove("show");
+        document.querySelector(".overlay").classList.remove("active");
+      });
+    });
+  });
+</script>
+
+
+
+
+<div class="floating-social">
+  <a href="https://wa.me/917020641228" target="_blank" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank" data-tooltip="Facebook"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank" data-tooltip="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank" data-tooltip="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  <a href="https://t.me/ErVyanki1997" target="_blank" data-tooltip="Telegram"><i class="fab fa-telegram"></i></a>
+</div>
+
+
+
+</body>
+</html>

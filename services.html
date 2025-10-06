@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SSDCPL | Services</title>
+  <link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Unified Navbar -->
+  <nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="SSDCPL Logo" class="logo-img"/> SSDCPL
+    </a>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <ul class="nav-links">
+      <li class="close-btn"><a href="#" onclick="toggleMenu()">&times;</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" aria-current="page">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="awards.html">Awards</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+  
+
+  <!-- Page Header -->
+  <header class="hero">
+    <h1>Our Services</h1>
+    <p>Comprehensive engineering and construction services tailored to your needs.</p>
+  </header>
+
+  <!-- Service Cards -->
+  <section>
+    <div class="container services">
+      <div class="card"><img src="highways.jpg" alt="Highways and Expressways" class="service-img"><h3>Highways and Expressways</h3><p>We deliver innovative and sustainable highway and expressway solutions built for the long term.</p><a href="highways-expressways.html">Learn More</a></div>
+      <div class="card"><img src="buildings.jpg" alt="Residential and Commercial Buildings" class="service-img"><h3>Residential and Commercial Buildings</h3><p>We design and build high-performance, sustainable residential and commercial properties.</p><a href="buildings.html">Learn More</a></div>
+      <div class="card"><img src="railway.jpg" alt="Railway and Metro Projects" class="service-img"><h3>Railway and Metro Projects</h3><p>Innovative, sustainable design for rail and metro projects, creating resilient urban transit.</p><a href="railway-metro.html">Learn More</a></div>
+      <div class="card"><img src="supply.jpg" alt="Construction Material, Manpower and Machinery" class="service-img"><h3>Construction Material, Manpower and Machinery</h3><p>We supply high-quality materials, skilled manpower, and modern machinery for your projects.</p><a href="supply.html">Learn More</a></div>
+      <div class="card"><img src="bim.jpg" alt="BIM Implementation" class="service-img"><h3>BIM Implementation</h3><p>Integrating intelligent, data-rich 3D models to enhance project visualization and coordination.</p><a href="bim.html">Learn More</a></div>
+      <div class="card"><img src="feasibility.jpg" alt="Feasibility Study and Detailed Projects" class="service-img"><h3>Feasibility Study and Detailed Projects</h3><p>Meticulous feasibility studies and detailed project reports for a strong project foundation.</p><a href="feasibility-study.html">Learn More</a></div>
+      <div class="card"><img src="estimation.jpg" alt="Estimation and Costing" class="service-img"><h3>Estimation and Costing</h3><p>Precise estimation services ensuring accurate budgeting and financial viability.</p><a href="estimation-costing.html">Learn More</a></div>
+      <div class="card"><img src="project-management.jpg" alt="Project Management" class="service-img"><h3>Project Management</h3><p>End-to-end project management ensuring timely and cost-effective delivery.</p><a href="project-management.html">Learn More</a></div>
+      <div class="card"><img src="tendering.jpg" alt="Tendering" class="service-img"><h3>Tendering</h3><p>Managing tender processes to secure the best value and quality for your projects.</p><a href="tendering.html">Learn More</a></div>
+      <div class="card"><img src="software-training.jpg" alt="Civil Engineering Software Training" class="service-img"><h3>Civil Engineering Software Training</h3><p>Hands-on training programs for essential industry software including BIM tools.</p><a href="software-training.html">Learn More</a></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+  <div class="container">
+    <p>© 2025 Suwarnasatya Design &amp; Construction Pvt. Ltd. | All Rights Reserved</p>
+    <div class="social-links">
+      <a href="https://wa.me/917020641228" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://t.me/ErVyanki1997" target="_blank"><i class="fab fa-telegram"></i></a>
+    </div>
+  </div>
+</footer>
+
+  <!-- Script -->
+  <script>
+    function toggleMenu() {
+      document.querySelector(".nav-links").classList.toggle("show");
+      document.querySelector(".overlay").classList.toggle("active");
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll(".nav-links a").forEach(function(link) {
+        link.addEventListener("click", function() {
+          document.querySelector(".nav-links").classList.remove("show");
+          document.querySelector(".overlay").classList.remove("active");
+        });
+      });
+    });
+  </script>
+
+
+
+<div class="floating-social">
+  <a href="https://wa.me/917020641228" target="_blank" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank" data-tooltip="Facebook"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank" data-tooltip="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank" data-tooltip="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  <a href="https://t.me/ErVyanki1997" target="_blank" data-tooltip="Telegram"><i class="fab fa-telegram"></i></a>
+</div>
+
+
+
+</body>
+</html>
