@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SSDCPL | Contact</title>
+  <link href="style.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* --- Contact form styles (safe to remove to style.css later) --- */
+    :root {
+      --brand:#0f6cff;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --bg:#f8fafc;
+      --ring:#c7d2fe;
+    }
+    section.contact-wrap{padding:3rem 1rem;background:var(--bg);}
+    .contact-grid{max-width:1100px;margin:0 auto;display:grid;gap:1.25rem;grid-template-columns:1fr;}
+    @media(min-width:900px){.contact-grid{grid-template-columns:1.1fr .9fr;}}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:1rem;box-shadow:0 8px 30px rgba(0,0,0,.04)}
+    .card h3{margin:0;padding:1.25rem 1.25rem 0;color:var(--ink);font-size:1.25rem}
+    .card .body{padding:1.25rem}
+    .contact-form .row{display:grid;gap:.85rem}
+    @media(min-width:640px){.contact-form .row.two{grid-template-columns:1fr 1fr;}}
+    .field{display:flex;flex-direction:column;gap:.35rem}
+    .field label{font-size:.9rem;color:var(--muted)}
+    .field input,.field textarea, .field select{
+      padding:.9rem 1rem;border:1px solid #e5e7eb;border-radius:.8rem;font:inherit;color:var(--ink);
+      outline:none; background:#fff;
+    }
+    .field input:focus,.field textarea:focus{border-color:var(--brand);box-shadow:0 0 0 4px var(--ring)}
+    .actions{display:flex;gap:.75rem;align-items:center;justify-content:flex-start;margin-top:.75rem}
+    .btn-primary{
+      appearance:none;border:none;background:var(--brand);color:#fff;padding:.9rem 1.1rem;border-radius:.8rem;
+      font-weight:600;cursor:pointer;transition:transform .02s ease;
+    }
+    .btn-primary:active{transform:translateY(1px)}
+    .helper{font-size:.85rem;color:var(--muted)}
+    .success{display:none;margin-top:.75rem;padding:.75rem 1rem;border-radius:.75rem;background:#ecfeff;border:1px solid #a5f3fc;color:#155e75}
+    .success.show{display:block}
+    .info-list{display:grid;gap:.65rem;font-size:.98rem;color:var(--ink)}
+    .info-list i{width:1.2rem}
+    .required{color:#ef4444}
+    .map iframe{width:100%;height:260px;border:0;border-radius:0 0 1rem 1rem}
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="SSDCPL Logo" class="logo-img"/> SSDCPL
+    </a>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <ul class="nav-links">
+      <li class="close-btn"><a href="#" onclick="toggleMenu()">&times;</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="awards.html">Awards</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="contact-wrap">
+  <div class="contact-grid">
+    <!-- Form -->
+    <div class="card">
+      <h3>Send us a message</h3>
+      <div class="body">
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/suwarnasatya26@gmail.com" method="POST">
+          <!-- FormSubmit options -->
+          <input type="hidden" name="_subject" value="New inquiry from SSDCPL website">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_autoresponse" value="Thanks for contacting Suwarnasatya Design & Construction Pvt. Ltd. We have received your message and will reply shortly.">
+
+          <div class="row two">
+            <div class="field">
+              <label for="name">Full Name <span class="required">*</span></label>
+              <input id="name" name="name" type="text" placeholder="Your name" required minlength="2" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span class="required">*</span></label>
+              <input id="phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required pattern="[0-9+\-()\s]{8,}" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="row two">
+            <div class="field">
+              <label for="email">Email <span class="required">*</span></label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="service">Service</label>
+              <select id="service" name="service">
+                <option value="">Select a service (optional)</option>
+                <option>Design & BIM</option>
+                <option>Quantity Surveying</option>
+                <option>Highway & Bridge</option>
+                <option>Industrial & Structural</option>
+                <option>General Inquiry</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="message">Message <span class="required">*</span></label>
+              <textarea id="message" name="message" placeholder="Write your message" rows="5" required minlength="10"></textarea>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn-primary" type="submit">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+            <span class="helper">We’ll get back within 1–2 business days.</span>
+          </div>
+
+          <div id="formSuccess" class="success">
+            <i class="fa-solid fa-circle-check"></i> Thanks! Your message has been sent.
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Contact info -->
+    <div class="card">
+      <h3>Reach us directly</h3>
+      <div class="body">
+        <div class="info-list">
+          <div><i class="fa-solid fa-location-dot"></i> <strong>Address:</strong> Suwarnasatya Design & Construction Pvt. Ltd., Solapur, India</div>
+          <div><i class="fa-solid fa-phone"></i> <strong>Phone:</strong> <a href="tel:+917020641228">+91 7020641228</a></div>
+          <div><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> <a href="mailto:suwarnasatya26@gmail.com">suwarnasatya26@gmail.com</a></div>
+          <div><i class="fa-brands fa-whatsapp"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/917020641228" target="_blank">Chat on WhatsApp</a></div>
+        </div>
+      </div>
+      <div class="map">
+        <iframe
+          loading="lazy" allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Solapur%2C%20India&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Suwarnasatya Design &amp; Construction Pvt. Ltd. | All Rights Reserved</p>
+    <div class="social-links">
+      <a href="https://wa.me/917020641228" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://t.me/ErVyanki1997" target="_blank"><i class="fab fa-telegram"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+      link.addEventListener("click", function() {
+        document.querySelector(".nav-links").classList.remove("show");
+      });
+    });
+
+    // Show a soft success message when FormSubmit sends us back (look for ?success=1)
+    const params = new URLSearchParams(location.search);
+    if (params.get("success") === "1") {
+      const el = document.getElementById("formSuccess");
+      if (el) el.classList.add("show");
+      // Remove the query so it won't show on refresh
+      history.replaceState(null, "", location.pathname);
+    }
+  });
+</script>
+
+<div class="floating-social">
+  <a href="https://wa.me/917020641228" target="_blank" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank" data-tooltip="Facebook"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank" data-tooltip="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank" data-tooltip="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  <a href="https://t.me/ErVyanki1997" target="_blank" data-tooltip="Telegram"><i class="fab fa-telegram"></i></a>
+</div>
+
+</body>
+</html>
