@@ -3,18 +3,12 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SSDCPL | Contact</title>
+  <title>SSDCPL | Contact (Resilient)</title>
   <link href="style.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* --- Contact form styles (safe to remove to style.css later) --- */
-    :root {
-      --brand:#0f6cff;
-      --ink:#1f2937;
-      --muted:#6b7280;
-      --bg:#f8fafc;
-      --ring:#c7d2fe;
-    }
+    :root { --brand:#0f6cff; --ink:#1f2937; --muted:#6b7280; --bg:#f8fafc; --ring:#c7d2fe; }
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif;color:var(--ink)}
     section.contact-wrap{padding:3rem 1rem;background:var(--bg);}
     .contact-grid{max-width:1100px;margin:0 auto;display:grid;gap:1.25rem;grid-template-columns:1fr;}
     @media(min-width:900px){.contact-grid{grid-template-columns:1.1fr .9fr;}}
@@ -30,15 +24,22 @@
       outline:none; background:#fff;
     }
     .field input:focus,.field textarea:focus{border-color:var(--brand);box-shadow:0 0 0 4px var(--ring)}
-    .actions{display:flex;gap:.75rem;align-items:center;justify-content:flex-start;margin-top:.75rem}
+    .actions{display:flex;gap:.75rem;align-items:center;justify-content:flex-start;margin-top:.75rem;flex-wrap:wrap}
     .btn-primary{
       appearance:none;border:none;background:var(--brand);color:#fff;padding:.9rem 1.1rem;border-radius:.8rem;
       font-weight:600;cursor:pointer;transition:transform .02s ease;
     }
+    .btn-secondary{
+      appearance:none;border:1px solid #e5e7eb;background:#fff;color:var(--ink);padding:.9rem 1.1rem;border-radius:.8rem;
+      font-weight:600;cursor:pointer;
+    }
     .btn-primary:active{transform:translateY(1px)}
     .helper{font-size:.85rem;color:var(--muted)}
-    .success{display:none;margin-top:.75rem;padding:.75rem 1rem;border-radius:.75rem;background:#ecfeff;border:1px solid #a5f3fc;color:#155e75}
-    .success.show{display:block}
+    .notice{display:none;margin-top:.75rem;padding:.75rem 1rem;border-radius:.75rem}
+    .success{background:#ecfeff;border:1px solid #a5f3fc;color:#155e75}
+    .warning{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}
+    .error{background:#fee2e2;border:1px solid #fecaca;color:#991b1b}
+    .notice.show{display:block}
     .info-list{display:grid;gap:.65rem;font-size:.98rem;color:var(--ink)}
     .info-list i{width:1.2rem}
     .required{color:#ef4444}
@@ -47,37 +48,14 @@
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="container">
-    <a href="index.html" class="logo">
-      <img src="logo.png" alt="SSDCPL Logo" class="logo-img"/> SSDCPL
-    </a>
-    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
-    <ul class="nav-links">
-      <li class="close-btn"><a href="#" onclick="toggleMenu()">&times;</a></li>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="awards.html">Awards</a></li>
-      <li><a href="contact.html" aria-current="page">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-
 <section class="contact-wrap">
   <div class="contact-grid">
     <!-- Form -->
     <div class="card">
       <h3>Send us a message</h3>
       <div class="body">
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/suwarnasatya26@gmail.com" method="POST">
-          <!-- FormSubmit options -->
-          <input type="hidden" name="_subject" value="New inquiry from SSDCPL website">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_autoresponse" value="Thanks for contacting Suwarnasatya Design & Construction Pvt. Ltd. We have received your message and will reply shortly.">
-
+        <!-- We will submit with JS to allow fallback when form provider is down -->
+        <form class="contact-form" id="contactForm" novalidate>
           <div class="row two">
             <div class="field">
               <label for="name">Full Name <span class="required">*</span></label>
@@ -118,12 +96,18 @@
             <button class="btn-primary" type="submit">
               <i class="fa-solid fa-paper-plane"></i> Send Message
             </button>
-            <span class="helper">We’ll get back within 1–2 business days.</span>
+            <button type="button" id="emailFallback" class="btn-secondary" title="Opens your email app">
+              <i class="fa-solid fa-envelope"></i> Send via Email
+            </button>
+            <a id="waLink" class="btn-secondary" target="_blank" rel="noopener" title="Open WhatsApp with your message">
+              <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+            </a>
+            <span class="helper">Primary: FormSubmit → Fallback: Email / WhatsApp</span>
           </div>
 
-          <div id="formSuccess" class="success">
-            <i class="fa-solid fa-circle-check"></i> Thanks! Your message has been sent.
-          </div>
+          <div id="ok" class="notice success"><i class="fa-solid fa-circle-check"></i> Thanks! Your message has been sent.</div>
+          <div id="warn" class="notice warning"><i class="fa-solid fa-triangle-exclamation"></i> The form service is temporarily unavailable. We switched to Email/WhatsApp—please send from there.</div>
+          <div id="err" class="notice error"><i class="fa-solid fa-circle-xmark"></i> Please check the required fields and try again.</div>
         </form>
       </div>
     </div>
@@ -141,57 +125,102 @@
       </div>
       <div class="map">
         <iframe
-          loading="lazy" allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=Solapur%2C%20India&output=embed">
-        </iframe>
+  loading="lazy"
+  allowfullscreen
+  referrerpolicy="no-referrer-when-downgrade"
+  src="https://www.google.com/maps?q=Suwarnasatya%20Design%20and%20construction%20Private%20Limited,%20196,%20Chakote%20Nagar,%20Hyderabad%20Rd,%20I%20Group%20Vidi%20Gharkul,%20Saruwadi%20Nagar,%20Rangraj%20Nagar,%20Solapur,%20Maharashtra%20413005&output=embed"
+  width="100%"
+  height="300"
+  style="border:0;border-radius:0 0 1rem 1rem;">
+</iframe>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <p>© 2025 Suwarnasatya Design &amp; Construction Pvt. Ltd. | All Rights Reserved</p>
-    <div class="social-links">
-      <a href="https://wa.me/917020641228" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://t.me/ErVyanki1997" target="_blank"><i class="fab fa-telegram"></i></a>
-    </div>
-  </div>
-</footer>
-
 <script>
-  function toggleMenu() {
-    document.querySelector(".nav-links").classList.toggle("show");
-  }
-  document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll(".nav-links a").forEach(function(link) {
-      link.addEventListener("click", function() {
-        document.querySelector(".nav-links").classList.remove("show");
-      });
-    });
+(function(){
+  const form = document.getElementById('contactForm');
+  const ok = document.getElementById('ok');
+  const warn = document.getElementById('warn');
+  const err = document.getElementById('err');
+  const emailBtn = document.getElementById('emailFallback');
+  const waLink = document.getElementById('waLink');
 
-    // Show a soft success message when FormSubmit sends us back (look for ?success=1)
-    const params = new URLSearchParams(location.search);
-    if (params.get("success") === "1") {
-      const el = document.getElementById("formSuccess");
-      if (el) el.classList.add("show");
-      // Remove the query so it won't show on refresh
-      history.replaceState(null, "", location.pathname);
+  function show(el){ [ok,warn,err].forEach(x=>x.classList.remove('show')); el.classList.add('show'); }
+  function data(){ return {
+    name: document.getElementById('name').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    service: document.getElementById('service').value.trim(),
+    message: document.getElementById('message').value.trim()
+  };}
+
+  function buildMailto(d){
+    const subject = encodeURIComponent('New inquiry from SSDCPL website');
+    const body = encodeURIComponent(
+      `Name: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nService: ${d.service||'-'}\n\nMessage:\n${d.message}`
+    );
+    return `mailto:suwarnasatya26@gmail.com?subject=${subject}&body=${body}`;
+  }
+
+  function buildWhatsApp(d){
+    const text = encodeURIComponent(
+      `New website inquiry:%0aName: ${d.name}%0aPhone: ${d.phone}%0aEmail: ${d.email}%0aService: ${d.service||'-'}%0a%0a${d.message}`
+    );
+    return `https://wa.me/917020641228?text=${text}`;
+  }
+
+  // keep WA link up to date with typed content
+  function syncLinks(){
+    const d = data();
+    waLink.href = buildWhatsApp(d);
+  }
+  ['input','change'].forEach(evt=>form.addEventListener(evt, syncLinks));
+  syncLinks();
+
+  emailBtn.addEventListener('click', function(){
+    const d = data();
+    location.href = buildMailto(d);
+  });
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ show(err); return; }
+
+    const d = data();
+    // Attempt FormSubmit (AJAX). If it fails (e.g., 522), fall back.
+    try{
+      const res = await fetch('https://formsubmit.co/ajax/suwarnasatya26@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: d.name,
+          phone: d.phone,
+          email: d.email,
+          service: d.service || '—',
+          message: d.message,
+          _subject: 'New inquiry from SSDCPL website',
+          _template: 'table'
+        }),
+      });
+      if(res.ok){
+        form.reset();
+        syncLinks();
+        show(ok);
+        return;
+      }
+      // Non-OK -> fall back
+      show(warn);
+      window.open(buildMailto(d), '_self');
+    }catch(error){
+      // Network error/522/etc -> fall back
+      show(warn);
+      window.open(buildMailto(d), '_self');
     }
   });
+})();
 </script>
-
-<div class="floating-social">
-  <a href="https://wa.me/917020641228" target="_blank" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank" data-tooltip="Facebook"><i class="fab fa-facebook"></i></a>
-  <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank" data-tooltip="Instagram"><i class="fab fa-instagram"></i></a>
-  <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank" data-tooltip="LinkedIn"><i class="fab fa-linkedin"></i></a>
-  <a href="https://t.me/ErVyanki1997" target="_blank" data-tooltip="Telegram"><i class="fab fa-telegram"></i></a>
-</div>
 
 </body>
 </html>
