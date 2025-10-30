@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SSDCPL | Contact (Resilient)</title>
+  <title>SSDCPL | Contact</title>
   <link href="style.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -29,24 +29,55 @@
       appearance:none;border:none;background:var(--brand);color:#fff;padding:.9rem 1.1rem;border-radius:.8rem;
       font-weight:600;cursor:pointer;transition:transform .02s ease;
     }
-    .btn-secondary{
-      appearance:none;border:1px solid #e5e7eb;background:#fff;color:var(--ink);padding:.9rem 1.1rem;border-radius:.8rem;
-      font-weight:600;cursor:pointer;
-    }
     .btn-primary:active{transform:translateY(1px)}
-    .helper{font-size:.85rem;color:var(--muted)}
-    .notice{display:none;margin-top:.75rem;padding:.75rem 1rem;border-radius:.75rem}
-    .success{background:#ecfeff;border:1px solid #a5f3fc;color:#155e75}
-    .warning{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}
-    .error{background:#fee2e2;border:1px solid #fecaca;color:#991b1b}
-    .notice.show{display:block}
+    .required{color:#ef4444}
     .info-list{display:grid;gap:.65rem;font-size:.98rem;color:var(--ink)}
     .info-list i{width:1.2rem}
-    .required{color:#ef4444}
     .map iframe{width:100%;height:260px;border:0;border-radius:0 0 1rem 1rem}
+
+    /* Thank You box */
+    .thankyou-box {display:none; text-align:center; padding:2rem;}
+    .thankyou-box h1 {color:#0f6cff; margin-bottom:1rem;}
+    .thankyou-box p {margin:.5rem 0; color:#374151;}
+
+    /* Floating social (matches Projects style) */
+    .floating-social{
+      position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:.5rem;z-index:70;
+    }
+    .floating-social a{
+      width:46px;height:46px;border-radius:999px;display:grid;place-items:center;
+      background:#fff;border:1px solid #e5e7eb;box-shadow:0 6px 18px rgba(0,0,0,.08);
+      text-decoration:none;font-size:1.1rem;color:#111827;
+    }
+    .floating-social a:hover{transform:translateY(-2px)}
+    @media(max-width:480px){.floating-social{right:12px;bottom:12px}}
   </style>
 </head>
 <body>
+
+<!-- Header/nav (same as Projects) -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="SSDCPL Logo" class="logo-img"/> SSDCPL
+    </a>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <ul class="nav-links">
+      <li class="close-btn"><a href="#" onclick="toggleMenu()">&times;</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="awards.html">Awards</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>Contact Us</h1>
+  <p>We’d love to hear about your project. Reach out and our team will get back to you shortly.</p>
+</header>
 
 <section class="contact-wrap">
   <div class="contact-grid">
@@ -54,23 +85,26 @@
     <div class="card">
       <h3>Send us a message</h3>
       <div class="body">
-        <!-- We will submit with JS to allow fallback when form provider is down -->
-        <form class="contact-form" id="contactForm" novalidate>
+        <form id="contactForm" action="https://formsubmit.co/suwarnasatya26@gmail.com" method="POST" class="contact-form">
+          <input type="hidden" name="_subject" value="New inquiry from SSDCPL website">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+
           <div class="row two">
             <div class="field">
               <label for="name">Full Name <span class="required">*</span></label>
-              <input id="name" name="name" type="text" placeholder="Your name" required minlength="2" autocomplete="name">
+              <input id="name" name="name" type="text" placeholder="Your name" required minlength="2">
             </div>
             <div class="field">
               <label for="phone">Phone <span class="required">*</span></label>
-              <input id="phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required pattern="[0-9+\-()\s]{8,}" autocomplete="tel">
+              <input id="phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required>
             </div>
           </div>
 
           <div class="row two">
             <div class="field">
               <label for="email">Email <span class="required">*</span></label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email">
+              <input id="email" name="email" type="email" placeholder="you@example.com" required>
             </div>
             <div class="field">
               <label for="service">Service</label>
@@ -96,19 +130,16 @@
             <button class="btn-primary" type="submit">
               <i class="fa-solid fa-paper-plane"></i> Send Message
             </button>
-            <button type="button" id="emailFallback" class="btn-secondary" title="Opens your email app">
-              <i class="fa-solid fa-envelope"></i> Send via Email
-            </button>
-            <a id="waLink" class="btn-secondary" target="_blank" rel="noopener" title="Open WhatsApp with your message">
-              <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
-            </a>
-            <span class="helper">Primary: FormSubmit → Fallback: Email / WhatsApp</span>
           </div>
-
-          <div id="ok" class="notice success"><i class="fa-solid fa-circle-check"></i> Thanks! Your message has been sent.</div>
-          <div id="warn" class="notice warning"><i class="fa-solid fa-triangle-exclamation"></i> The form service is temporarily unavailable. We switched to Email/WhatsApp—please send from there.</div>
-          <div id="err" class="notice error"><i class="fa-solid fa-circle-xmark"></i> Please check the required fields and try again.</div>
         </form>
+
+        <!-- Thank You Message (inline) -->
+        <div id="thankYou" class="thankyou-box">
+          <i class="fa-solid fa-circle-check" style="font-size:3rem; color:#22c55e;"></i>
+          <h1>Thank You!</h1>
+          <p>Your message has been sent successfully.</p>
+          <p>Redirecting to Home in <span id="countdown">5</span> seconds...</p>
+        </div>
       </div>
     </div>
 
@@ -123,103 +154,56 @@
           <div><i class="fa-brands fa-whatsapp"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/917020641228" target="_blank">Chat on WhatsApp</a></div>
         </div>
       </div>
-      <div class="map">
-        <iframe
-  loading="lazy"
-  allowfullscreen
-  referrerpolicy="no-referrer-when-downgrade"
-  src="https://www.google.com/maps?q=Suwarnasatya%20Design%20and%20construction%20Private%20Limited,%20196,%20Chakote%20Nagar,%20Hyderabad%20Rd,%20I%20Group%20Vidi%20Gharkul,%20Saruwadi%20Nagar,%20Rangraj%20Nagar,%20Solapur,%20Maharashtra%20413005&output=embed"
-  width="100%"
-  height="300"
-  style="border:0;border-radius:0 0 1rem 1rem;">
-</iframe>
-      </div>
     </div>
   </div>
 </section>
 
+<!-- Floating social from Projects -->
+<div class="floating-social">
+  <a href="https://wa.me/917020641228" target="_blank" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.facebook.com/share/1CMiuKqFtm/" target="_blank" data-tooltip="Facebook"><i class="fab fa-facebook"></i></a>
+  <a href="https://www.instagram.com/suwarnasatya_dcpl?igsh=YmgyenhwOTU4ZmU2" target="_blank" data-tooltip="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.linkedin.com/company/suwarnasatya-design-and-construction-private-limited/" target="_blank" data-tooltip="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  <a href="https://t.me/ErVyanki1997" target="_blank" data-tooltip="Telegram"><i class="fab fa-telegram"></i></a>
+</div>
+
+<footer>
+  <div class="container">
+    <p>© <span id="yr"></span> Suwarnasatya Design &amp; Construction Pvt. Ltd. | All Rights Reserved</p>
+  </div>
+</footer>
+
 <script>
-(function(){
-  const form = document.getElementById('contactForm');
-  const ok = document.getElementById('ok');
-  const warn = document.getElementById('warn');
-  const err = document.getElementById('err');
-  const emailBtn = document.getElementById('emailFallback');
-  const waLink = document.getElementById('waLink');
+  document.getElementById('yr').textContent = new Date().getFullYear();
 
-  function show(el){ [ok,warn,err].forEach(x=>x.classList.remove('show')); el.classList.add('show'); }
-  function data(){ return {
-    name: document.getElementById('name').value.trim(),
-    phone: document.getElementById('phone').value.trim(),
-    email: document.getElementById('email').value.trim(),
-    service: document.getElementById('service').value.trim(),
-    message: document.getElementById('message').value.trim()
-  };}
-
-  function buildMailto(d){
-    const subject = encodeURIComponent('New inquiry from SSDCPL website');
-    const body = encodeURIComponent(
-      `Name: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nService: ${d.service||'-'}\n\nMessage:\n${d.message}`
-    );
-    return `mailto:suwarnasatya26@gmail.com?subject=${subject}&body=${body}`;
+  function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
   }
 
-  function buildWhatsApp(d){
-    const text = encodeURIComponent(
-      `New website inquiry:%0aName: ${d.name}%0aPhone: ${d.phone}%0aEmail: ${d.email}%0aService: ${d.service||'-'}%0a%0a${d.message}`
-    );
-    return `https://wa.me/917020641228?text=${text}`;
-  }
-
-  // keep WA link up to date with typed content
-  function syncLinks(){
-    const d = data();
-    waLink.href = buildWhatsApp(d);
-  }
-  ['input','change'].forEach(evt=>form.addEventListener(evt, syncLinks));
-  syncLinks();
-
-  emailBtn.addEventListener('click', function(){
-    const d = data();
-    location.href = buildMailto(d);
-  });
-
-  form.addEventListener('submit', async function(e){
+  // Intercept form submit to show inline thank you + auto-redirect
+  const form = document.getElementById("contactForm");
+  const thankYou = document.getElementById("thankYou");
+  form.addEventListener("submit", function(e) {
     e.preventDefault();
-    if(!form.checkValidity()){ show(err); return; }
+    // Hide form, show thank-you
+    form.style.display = "none";
+    thankYou.style.display = "block";
 
-    const d = data();
-    // Attempt FormSubmit (AJAX). If it fails (e.g., 522), fall back.
-    try{
-      const res = await fetch('https://formsubmit.co/ajax/suwarnasatya26@gmail.com', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          name: d.name,
-          phone: d.phone,
-          email: d.email,
-          service: d.service || '—',
-          message: d.message,
-          _subject: 'New inquiry from SSDCPL website',
-          _template: 'table'
-        }),
-      });
-      if(res.ok){
-        form.reset();
-        syncLinks();
-        show(ok);
-        return;
+    // 5s countdown then redirect to Home
+    let countdown = 5;
+    const counter = document.getElementById("countdown");
+    const interval = setInterval(() => {
+      countdown--;
+      counter.textContent = countdown;
+      if (countdown <= 0) {
+        clearInterval(interval);
+        window.location.href = "index.html";
       }
-      // Non-OK -> fall back
-      show(warn);
-      window.open(buildMailto(d), '_self');
-    }catch(error){
-      // Network error/522/etc -> fall back
-      show(warn);
-      window.open(buildMailto(d), '_self');
-    }
+    }, 1000);
+
+    // Submit to FormSubmit without triggering this handler again
+    HTMLFormElement.prototype.submit.call(form);
   });
-})();
 </script>
 
 </body>
